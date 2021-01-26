@@ -25,7 +25,20 @@ struct Mac final {
 	// comparison operator
 	//
 	bool operator == (const Mac& r) const { return memcmp(mac_, r.mac_, SIZE) == 0; }
-
-protected:
+	bool operator < (const Mac& r) const { return memcmp(mac_, r.mac_, SIZE) < 0; }
+	bool operator > (const Mac& r) const { return memcmp(mac_, r.mac_, SIZE) > 0; }
+public:
 	uint8_t mac_[SIZE];
 };
+
+namespace std {
+	template<>
+	struct hash<Mac> {
+		size_t operator() (const Mac & rhs) const {
+			size_t h1 = std::hash<std::uint32_t>{}(rhs.mac_[0]);
+            for(int i=1; i<Mac::SIZE; i++)
+				h1=h1^(rhs.mac_[i]<<1);
+            return h1;
+		}
+	};
+}
