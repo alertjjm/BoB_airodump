@@ -1,5 +1,8 @@
-# packet-stat
+# airodump
+## Usage
+- sudo sh setting.sh wlan1
+- sudo ./airodump wlan1
 
-## ETH, IP, TCP, UDP의 패킷 statistics를 각각 && Conversation으로 출력
-![캡처](https://user-images.githubusercontent.com/46064193/104534950-8f868280-5658-11eb-8b44-29fcc7c02272.PNG)
+## Beacon과 Probe 802.11 패킷들을 수집한 결과를 보여주는 airodump
+![image](https://user-images.githubusercontent.com/46064193/105818913-ce262080-5ffa-11eb-94cb-31154de2ecea.png)
 ===
